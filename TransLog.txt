@@ -1,0 +1,2 @@
+Account ID: 101 Balance: 100000.0 Type: Checking
+Transcaction logs: 
