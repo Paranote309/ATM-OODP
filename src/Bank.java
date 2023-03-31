@@ -1,23 +1,7 @@
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
 
 public class Bank extends Frame implements ActionListener {
 
