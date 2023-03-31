@@ -38,7 +38,7 @@ public class QuitDecorator extends Decorator {
         // Draw a red border if mouse is over
         if (mouse_over) {
             Dimension d = super.getSize();
-            g.setColor(Color.green);
+            g.setColor(Color.red);
             g.drawRect(0, 0, d.width - 1, d.height - 1);
             g.drawLine(d.width - 2, 0, d.width - 2, d.height - 1);
             g.drawLine(0, d.height - 2, d.width - 2, d.height - 2);
