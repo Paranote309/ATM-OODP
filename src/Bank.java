@@ -506,7 +506,9 @@ public class Bank extends Frame implements ActionListener {
 		quit.setBackground(Color.red);
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				executeCommand(new ExitCommand(jMenu));
+				// provide execute command for each object to carry
+				// desired actions which is to exit
 			}
 		});
 		mainPanel.add(new QuitDecorator(quit));
@@ -862,6 +864,24 @@ public class Bank extends Frame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 
+	}
+
+	private void executeCommand(Command command) {
+		// We could keep a command history in a stack here
+		command.Execute();
+	}
+
+	class ExitCommand implements Command {
+		private JFrame parent;
+
+		ExitCommand(JFrame parent) {
+			this.parent = parent;
+		}
+
+		public void Execute() {
+			System.exit(0);
+		}// implements from the interface command class
+			// when the button is press will exit the GUI
 	}
 
 }
