@@ -89,11 +89,6 @@ public class Bank extends Frame implements ActionListener {
 
 	}
 
-	// singleton
-	public static synchronized Bank getAtmBank() {
-
-	}
-
 	public void showMainMenu() {
 
 		jMenu = new JFrame();
@@ -666,8 +661,7 @@ public class Bank extends Frame implements ActionListener {
 					create.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 
-							User newUser = new User(tfUserName.getText(),
-									tfUserPass.getText());
+							User newUser = new User.Builder(tfUserName.getText(), tfUserPass.getText()).build();
 							try {
 								double d1 = Double.parseDouble(tfBal.getText());
 								int i1 = Integer.parseInt(tfAccId.getText());
@@ -732,7 +726,8 @@ public class Bank extends Frame implements ActionListener {
 	}
 
 	public void createUser(String name, String password) {
-		User user = new User(name, password);
+		// User user = new User(name, password);
+		User user = new User.Builder(name, password).build();
 		ArrayList<Account> list = new ArrayList<Account>();
 		users.put(user, list);
 	}

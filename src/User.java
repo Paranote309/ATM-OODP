@@ -53,13 +53,13 @@ public class User {
 
 	}
 
-	public User(String name, String password) {
-		this.name = name;
-		this.password = password;
-		this.userID = 1;
-		userTrans = new ArrayList<String>();
+	// public User(String name, String password) {
+	// this.name = name;
+	// this.password = password;
+	// this.userID = 1;
+	// userTrans = new ArrayList<String>();
 
-	}
+	// }
 
 	public String getName() {
 		return this.name;
