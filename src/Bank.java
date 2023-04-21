@@ -391,17 +391,12 @@ public class Bank extends Frame implements ActionListener {
 				withWithDraw.setText(" WithDraw ");
 				withWithDraw.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						try {
-							int accId = Integer.parseInt(withAccId.getText());
-							double amount = Double.parseDouble(withAmount
-									.getText());
-							withDraw(amount, accId, withType.getText());
-							j2.dispose();
+						int accId = Integer.parseInt(withAccId.getText());
+						double amount = Double.parseDouble(withAmount
+								.getText());
+						withDraw(amount, accId, withType.getText());
+						j2.dispose();
 
-						} catch (Exception e4) {
-							JOptionPane.showMessageDialog(null,
-									"Transaction Failed : Invalid Input");
-						}
 					}
 
 				});
