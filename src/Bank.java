@@ -89,6 +89,11 @@ public class Bank extends Frame implements ActionListener {
 
 	}
 
+	// singleton
+	public static synchronized Bank getAtmBank() {
+
+	}
+
 	public void showMainMenu() {
 
 		jMenu = new JFrame();
@@ -853,6 +858,9 @@ public class Bank extends Frame implements ActionListener {
 
 	public static void main(String args[]) {
 		Bank b1 = new Bank();
+		User user = new User.Builder("benji", "pass")
+				.setUserID(3)
+				.build();
 		b1.showLoginMenu();
 	}
 
