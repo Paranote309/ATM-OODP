@@ -157,21 +157,21 @@ public class Bank extends Frame implements ActionListener {
 									withDraw(amount, acc1, "Transfer");
 									deposit(amount, acc2, "Transfer");
 									JOptionPane.showMessageDialog(null,
-											"Tranfer successful");
+											"Transfer successful");
 									j4.dispose();
 
 								} else {
 									JOptionPane
 											.showMessageDialog(null,
-													"Tranfer failed : in suffiecent balance");
+													"Transfer failed : in sufficient balance");
 								}
 							} else {
 								JOptionPane.showMessageDialog(null,
-										"Tranfer failed : Account not found ");
+										"Transfer failed : Account not found ");
 							}
 						} catch (Exception e5) {
 							JOptionPane.showMessageDialog(null,
-									"Tranfer failed : Invalid Input");
+									"Transfer failed : Invalid Input");
 						}
 
 					}
@@ -187,133 +187,133 @@ public class Bank extends Frame implements ActionListener {
 		});
 		mainPanel.add(new SelectedDecorator(transfer));
 
-		createAccount = new JButton();
-		createAccount.setFont(new Font("Serif", Font.PLAIN, 30));
-		createAccount.setText(" 2.  createAccount");
-		createAccount.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				newCreateAcc = new JFrame();
-				JPanel mainPanel = new JPanel();
+		// createAccount = new JButton();
+		// createAccount.setFont(new Font("Serif", Font.PLAIN, 30));
+		// createAccount.setText(" 2. createAccount");
+		// createAccount.addActionListener(new ActionListener() {
+		// public void actionPerformed(ActionEvent e) {
+		// newCreateAcc = new JFrame();
+		// JPanel mainPanel = new JPanel();
 
-				mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-				mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-				newCreateAcc.add(mainPanel, BorderLayout.CENTER);
+		// mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		// mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		// newCreateAcc.add(mainPanel, BorderLayout.CENTER);
 
-				JRadioButton checking = new JRadioButton("Checking");
-				JRadioButton saving = new JRadioButton("Saving");
+		// JRadioButton checking = new JRadioButton("Checking");
+		// JRadioButton saving = new JRadioButton("Saving");
 
-				ButtonGroup group = new ButtonGroup();
-				group.add(checking);
-				group.add(saving);
+		// ButtonGroup group = new ButtonGroup();
+		// group.add(checking);
+		// group.add(saving);
 
-				mainPanel.add(new Label(" Create your Account :  "
-						+ loggedInUser.getName()));
+		// mainPanel.add(new Label(" Create your Account : "
+		// + loggedInUser.getName()));
 
-				mainPanel.add(new Label(" Select your account type : "));
-				checking.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						accType = "Checking";
-					}
-				});
-				mainPanel.add(checking);
+		// mainPanel.add(new Label(" Select your account type : "));
+		// checking.addActionListener(new ActionListener() {
+		// public void actionPerformed(ActionEvent e) {
+		// accType = "Checking";
+		// }
+		// });
+		// mainPanel.add(checking);
 
-				saving.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						accType = "Saving";
-					}
-				});
-				mainPanel.add(saving);
+		// saving.addActionListener(new ActionListener() {
+		// public void actionPerformed(ActionEvent e) {
+		// accType = "Saving";
+		// }
+		// });
+		// mainPanel.add(saving);
 
-				mainPanel.add(new Label("Amount to be added: "));
-				tfBal = new TextField(10);
-				mainPanel.add(tfBal);
+		// mainPanel.add(new Label("Amount to be added: "));
+		// tfBal = new TextField(10);
+		// mainPanel.add(tfBal);
 
-				mainPanel.add(new Label("AccountNumber: "));
-				tfAccId = new TextField(10);
-				mainPanel.add(tfAccId);
+		// mainPanel.add(new Label("AccountNumber: "));
+		// tfAccId = new TextField(10);
+		// mainPanel.add(tfAccId);
 
-				JButton create = new JButton("Create Account");
+		// JButton create = new JButton("Create Account");
 
-				create.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+		// create.addActionListener(new ActionListener() {
+		// public void actionPerformed(ActionEvent e) {
 
-						try {
-							double d1 = Double.parseDouble(tfBal.getText());
-							int i1 = Integer.parseInt(tfAccId.getText());
-							createAccount(d1, accType, i1);
-							newCreateAcc.dispose();
-						} catch (Exception E) {
-							JOptionPane.showMessageDialog(null,
-									" User Account not Created !!!");
-							newCreateAcc.dispose();
-						}
-					}
-				});
+		// try {
+		// double d1 = Double.parseDouble(tfBal.getText());
+		// int i1 = Integer.parseInt(tfAccId.getText());
+		// createAccount(d1, accType, i1);
+		// newCreateAcc.dispose();
+		// } catch (Exception E) {
+		// JOptionPane.showMessageDialog(null,
+		// " User Account not Created !!!");
+		// newCreateAcc.dispose();
+		// }
+		// }
+		// });
 
-				mainPanel.add(create);
+		// mainPanel.add(create);
 
-				newCreateAcc.setTitle("Creating Account"); // "super" Frame sets
-															// title
-				newCreateAcc.setSize(500, 500);
-				newCreateAcc.setLocationRelativeTo(null);// "super" Frame sets
-															// initial
-															// window size
-				newCreateAcc.setVisible(true);// "super" Frame shows
-				newCreateAcc.pack();
+		// newCreateAcc.setTitle("Creating Account"); // "super" Frame sets
+		// // title
+		// newCreateAcc.setSize(500, 500);
+		// newCreateAcc.setLocationRelativeTo(null);// "super" Frame sets
+		// // initial
+		// // window size
+		// newCreateAcc.setVisible(true);// "super" Frame shows
+		// newCreateAcc.pack();
 
-			}
-		});
-		mainPanel.add(new SelectedDecorator(createAccount));
+		// }
+		// });
+		// mainPanel.add(new SelectedDecorator(createAccount));
 
-		deleteAccount = new JButton();
-		deleteAccount.setFont(new Font("Serif", Font.PLAIN, 30));
-		deleteAccount.setText(" 3.  deleteAccount");
-		deleteAccount.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				j1 = new JFrame();
-				JPanel mainPanel = new JPanel();
+		// deleteAccount = new JButton();
+		// deleteAccount.setFont(new Font("Serif", Font.PLAIN, 30));
+		// deleteAccount.setText(" 3. deleteAccount");
+		// deleteAccount.addActionListener(new ActionListener() {
+		// public void actionPerformed(ActionEvent e) {
+		// j1 = new JFrame();
+		// JPanel mainPanel = new JPanel();
 
-				mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-				mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-				j1.add(mainPanel, BorderLayout.CENTER);
+		// mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		// mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		// j1.add(mainPanel, BorderLayout.CENTER);
 
-				mainPanel.add(new JLabel("Add Account ID  to be deleted : "));
-				delAccId = new TextField();
-				mainPanel.add(delAccId);
+		// mainPanel.add(new JLabel("Add Account ID to be deleted : "));
+		// delAccId = new TextField();
+		// mainPanel.add(delAccId);
 
-				JButton del = new JButton();
-				del.setFont(new Font("Serif", Font.PLAIN, 15));
-				del.setText(" Confirm ");
-				del.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						try {
-							int accId = Integer.parseInt(delAccId.getText());
-							System.out.println((users.get(loggedInUser)).get(0)
-									.getAccId());
-							deleteAccount(accId);
-							j1.dispose();
-						} catch (Exception e1) {
-							JOptionPane
-									.showMessageDialog(null, "Invalid AccId");
-						}
-					}
-				});
-				mainPanel.add(del);
+		// JButton del = new JButton();
+		// del.setFont(new Font("Serif", Font.PLAIN, 15));
+		// del.setText(" Confirm ");
+		// del.addActionListener(new ActionListener() {
+		// public void actionPerformed(ActionEvent e) {
+		// try {
+		// int accId = Integer.parseInt(delAccId.getText());
+		// System.out.println((users.get(loggedInUser)).get(0)
+		// .getAccId());
+		// deleteAccount(accId);
+		// j1.dispose();
+		// } catch (Exception e1) {
+		// JOptionPane
+		// .showMessageDialog(null, "Invalid AccId");
+		// }
+		// }
+		// });
+		// mainPanel.add(del);
 
-				j1.setTitle("ATM Machine");
-				j1.setSize(500, 500);
-				j1.setLocationRelativeTo(null);
-				mainPanel.setBackground(Color.blue);
-				j1.setVisible(true);
-				j1.pack();
+		// j1.setTitle("ATM Machine");
+		// j1.setSize(500, 500);
+		// j1.setLocationRelativeTo(null);
+		// mainPanel.setBackground(Color.blue);
+		// j1.setVisible(true);
+		// j1.pack();
 
-			}
-		});
-		mainPanel.add(new SelectedDecorator(deleteAccount));
+		// }
+		// });
+		// mainPanel.add(new SelectedDecorator(deleteAccount));
 
 		deposit = new JButton();
 		deposit.setFont(new Font("Serif", Font.PLAIN, 30));
-		deposit.setText("4.   deposit ");
+		deposit.setText("2.   deposit ");
 		deposit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				depositF = new JFrame();
@@ -364,7 +364,7 @@ public class Bank extends Frame implements ActionListener {
 
 		withDraw = new JButton();
 		withDraw.setFont(new Font("Serif", Font.PLAIN, 30));
-		withDraw.setText("5.   withDraw ");
+		withDraw.setText("3.   withDraw ");
 		withDraw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				j2 = new JFrame();
@@ -421,7 +421,7 @@ public class Bank extends Frame implements ActionListener {
 
 		showAcc = new JButton();
 		showAcc.setFont(new Font("Serif", Font.PLAIN, 30));
-		showAcc.setText("6. showAccount ");
+		showAcc.setText("4. showAccount ");
 		showAcc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				j3 = new JFrame();
@@ -463,7 +463,7 @@ public class Bank extends Frame implements ActionListener {
 
 		showAllAcc = new JButton();
 		showAllAcc.setFont(new Font("Serif", Font.PLAIN, 30));
-		showAllAcc.setText("7.  showAllAccount ");
+		showAllAcc.setText("5.  showAllAccount ");
 		showAllAcc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Account i : users.get(loggedInUser)) {
@@ -478,7 +478,7 @@ public class Bank extends Frame implements ActionListener {
 
 		delUser = new JButton();
 		delUser.setFont(new Font("Serif", Font.PLAIN, 30));
-		delUser.setText("8.  deleteUser ");
+		delUser.setText("6.  deleteUser ");
 		delUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				users.remove(loggedInUser);
@@ -490,7 +490,7 @@ public class Bank extends Frame implements ActionListener {
 
 		logOut = new JButton();
 		logOut.setFont(new Font("Serif", Font.PLAIN, 30));
-		logOut.setText("9.  LogOut ");
+		logOut.setText("7.  LogOut ");
 		logOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tfName.setText("");
@@ -502,7 +502,7 @@ public class Bank extends Frame implements ActionListener {
 
 		quit = new JButton();
 		quit.setFont(new Font("Serif", Font.PLAIN, 30));
-		quit.setText("10.  Quit ");
+		quit.setText("8.  Quit ");
 		quit.setBackground(Color.red);
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -559,17 +559,17 @@ public class Bank extends Frame implements ActionListener {
 		signIn = new JButton("Sign In");
 		signIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean succ = false;
+				boolean success = false;
 				for (User key : users.keySet()) {
 					if ((key.getName()).equals(tfName.getText())
 							&& (key.getPassword()).equals(tfPass.getText())) {
 						loggedInUser = key;
 						showMainMenu();
-						succ = true;
+						success = true;
 						break;
 					}
 				}
-				if (!succ) {
+				if (!success) {
 					JOptionPane.showMessageDialog(null,
 							"Incorrect Username or Password");
 				}
@@ -875,6 +875,19 @@ public class Bank extends Frame implements ActionListener {
 		private JFrame parent;
 
 		ExitCommand(JFrame parent) {
+			this.parent = parent;
+		}
+
+		public void Execute() {
+			System.exit(0);
+		}// implements from the interface command class
+			// when the button is press will exit the GUI
+	}
+
+	class ShowCommand implements Command {
+		private JFrame parent;
+
+		ShowCommand(JFrame parent) {
 			this.parent = parent;
 		}
 
