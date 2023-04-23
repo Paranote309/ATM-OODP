@@ -1,23 +1,28 @@
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+// import java.awt.BorderLayout;
+// import java.awt.Font;
+// import java.awt.Frame;
+// import java.awt.Label;
+// import java.awt.TextField;
+// import java.awt.event.ActionEvent;
+// import java.awt.event.ActionListener;
+// import java.util.ArrayList;
+// import java.util.Calendar;
+// import java.util.HashMap;
+// import java.awt.Color;
+// import javax.swing.BorderFactory;
+// import javax.swing.BoxLayout;
+// import javax.swing.ButtonGroup;
+// import javax.swing.JButton;
+// import javax.swing.JFrame;
+// import javax.swing.JLabel;
+// import javax.swing.JOptionPane;
+// import javax.swing.JPanel;
+// import javax.swing.JRadioButton;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
 
 public class Bank extends Frame implements ActionListener {
 
@@ -35,7 +40,7 @@ public class Bank extends Frame implements ActionListener {
 	private TextField transFromAccId;
 	private TextField transAmount;
 	private TextField transInAccId;
-	private JButton transTranfer;
+	private JButton transTransfer;
 	private Account accWith;
 	private JButton createAccount;
 	private JFrame newCreateAcc;
@@ -81,11 +86,20 @@ public class Bank extends Frame implements ActionListener {
 	private User loggedInUser;
 	private Calendar rightNow;
 	private int hour;
+	private static Bank instance;
 
-	public Bank() {
+	private Bank() {
 		users = new HashMap<User, ArrayList<Account>>();
 		loggedInUser = null;
 		rightNow = Calendar.getInstance();
+
+	}
+
+	public static synchronized Bank getBankInstance() {
+		if (instance == null)
+			instance = new Bank();
+
+		return instance;
 
 	}
 
@@ -116,11 +130,11 @@ public class Bank extends Frame implements ActionListener {
 				mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 				j4.add(mainPanel, BorderLayout.CENTER);
 
-				mainPanel.add(new JLabel("Account ID to tranfer from :"));
+				mainPanel.add(new JLabel("Account ID to Transfer from :"));
 				transFromAccId = new TextField();
 				mainPanel.add(transFromAccId);
 
-				mainPanel.add(new JLabel("Account ID to Tranfer into: "));
+				mainPanel.add(new JLabel("Account ID to Transfer into: "));
 				transInAccId = new TextField();
 				mainPanel.add(transInAccId);
 
@@ -128,8 +142,8 @@ public class Bank extends Frame implements ActionListener {
 				transAmount = new TextField();
 				mainPanel.add(transAmount);
 
-				transTranfer = new JButton("Transfer");
-				transTranfer.addActionListener(new ActionListener() {
+				transTransfer = new JButton("Transfer");
+				transTransfer.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
 							int acc1 = Integer.parseInt(transFromAccId
@@ -176,7 +190,7 @@ public class Bank extends Frame implements ActionListener {
 
 					}
 				});
-				mainPanel.add(transTranfer);
+				mainPanel.add(transTransfer);
 				j4.setTitle("Transfer");
 				j4.setSize(500, 500);
 				j4.setLocationRelativeTo(null);
@@ -186,130 +200,6 @@ public class Bank extends Frame implements ActionListener {
 			}
 		});
 		mainPanel.add(new SelectedDecorator(transfer));
-
-		// createAccount = new JButton();
-		// createAccount.setFont(new Font("Serif", Font.PLAIN, 30));
-		// createAccount.setText(" 2. createAccount");
-		// createAccount.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent e) {
-		// newCreateAcc = new JFrame();
-		// JPanel mainPanel = new JPanel();
-
-		// mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		// mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-		// newCreateAcc.add(mainPanel, BorderLayout.CENTER);
-
-		// JRadioButton checking = new JRadioButton("Checking");
-		// JRadioButton saving = new JRadioButton("Saving");
-
-		// ButtonGroup group = new ButtonGroup();
-		// group.add(checking);
-		// group.add(saving);
-
-		// mainPanel.add(new Label(" Create your Account : "
-		// + loggedInUser.getName()));
-
-		// mainPanel.add(new Label(" Select your account type : "));
-		// checking.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent e) {
-		// accType = "Checking";
-		// }
-		// });
-		// mainPanel.add(checking);
-
-		// saving.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent e) {
-		// accType = "Saving";
-		// }
-		// });
-		// mainPanel.add(saving);
-
-		// mainPanel.add(new Label("Amount to be added: "));
-		// tfBal = new TextField(10);
-		// mainPanel.add(tfBal);
-
-		// mainPanel.add(new Label("AccountNumber: "));
-		// tfAccId = new TextField(10);
-		// mainPanel.add(tfAccId);
-
-		// JButton create = new JButton("Create Account");
-
-		// create.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent e) {
-
-		// try {
-		// double d1 = Double.parseDouble(tfBal.getText());
-		// int i1 = Integer.parseInt(tfAccId.getText());
-		// createAccount(d1, accType, i1);
-		// newCreateAcc.dispose();
-		// } catch (Exception E) {
-		// JOptionPane.showMessageDialog(null,
-		// " User Account not Created !!!");
-		// newCreateAcc.dispose();
-		// }
-		// }
-		// });
-
-		// mainPanel.add(create);
-
-		// newCreateAcc.setTitle("Creating Account"); // "super" Frame sets
-		// // title
-		// newCreateAcc.setSize(500, 500);
-		// newCreateAcc.setLocationRelativeTo(null);// "super" Frame sets
-		// // initial
-		// // window size
-		// newCreateAcc.setVisible(true);// "super" Frame shows
-		// newCreateAcc.pack();
-
-		// }
-		// });
-		// mainPanel.add(new SelectedDecorator(createAccount));
-
-		// deleteAccount = new JButton();
-		// deleteAccount.setFont(new Font("Serif", Font.PLAIN, 30));
-		// deleteAccount.setText(" 3. deleteAccount");
-		// deleteAccount.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent e) {
-		// j1 = new JFrame();
-		// JPanel mainPanel = new JPanel();
-
-		// mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		// mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-		// j1.add(mainPanel, BorderLayout.CENTER);
-
-		// mainPanel.add(new JLabel("Add Account ID to be deleted : "));
-		// delAccId = new TextField();
-		// mainPanel.add(delAccId);
-
-		// JButton del = new JButton();
-		// del.setFont(new Font("Serif", Font.PLAIN, 15));
-		// del.setText(" Confirm ");
-		// del.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent e) {
-		// try {
-		// int accId = Integer.parseInt(delAccId.getText());
-		// System.out.println((users.get(loggedInUser)).get(0)
-		// .getAccId());
-		// deleteAccount(accId);
-		// j1.dispose();
-		// } catch (Exception e1) {
-		// JOptionPane
-		// .showMessageDialog(null, "Invalid AccId");
-		// }
-		// }
-		// });
-		// mainPanel.add(del);
-
-		// j1.setTitle("ATM Machine");
-		// j1.setSize(500, 500);
-		// j1.setLocationRelativeTo(null);
-		// mainPanel.setBackground(Color.blue);
-		// j1.setVisible(true);
-		// j1.pack();
-
-		// }
-		// });
-		// mainPanel.add(new SelectedDecorator(deleteAccount));
 
 		deposit = new JButton();
 		deposit.setFont(new Font("Serif", Font.PLAIN, 30));
@@ -531,13 +421,13 @@ public class Bank extends Frame implements ActionListener {
 		heading.setFont(new Font("Serif", Font.PLAIN, 25));
 		mainPanel.add(heading);
 
-		lblInput = new Label(" ***  Enter UserName: ");
+		lblInput = new Label(" *** Enter UserName: ");
 		mainPanel.add(lblInput);
 
 		tfName = new TextField(5);
 		mainPanel.add(tfName);
 
-		lblOutput = new Label(" ***  Password");
+		lblOutput = new Label(" *** Password");
 		mainPanel.add(lblOutput);
 
 		tfPass = new TextField(5);
@@ -576,7 +466,7 @@ public class Bank extends Frame implements ActionListener {
 		jSignPage.setTitle("ATM Machine"); // "super" Frame sets title
 		jSignPage.setSize(500, 250);
 		jSignPage.setLocationRelativeTo(null);// "super" Frame sets initial
-												// window size
+		// window size
 		jSignPage.setVisible(true);// "super" Frame shows
 	}
 
@@ -849,11 +739,11 @@ public class Bank extends Frame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
-		Bank b1 = new Bank();
+		Bank bank = Bank.getBankInstance();
 		User user = new User.Builder("benji", "pass")
 				.setUserID(3)
 				.build();
-		b1.showLoginMenu();
+		bank.showLoginMenu();
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
