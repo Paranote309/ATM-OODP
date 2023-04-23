@@ -2,10 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 //swing classes
-import javax.swing.text.*;
 import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.border.*;
 
 public class QuitDecorator extends Decorator {
     boolean mouse_over; // true when mouse over button

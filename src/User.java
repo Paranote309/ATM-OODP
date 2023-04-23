@@ -15,9 +15,11 @@ public class User {
 		private int userID;
 		private ArrayList<String> userTrans;
 
-		public Builder(String name, String password) {
+		public Builder(String name, String password, int userID) {
 			this.name = name;
 			this.password = password;
+			this.userID = userID;
+
 		}
 
 		public Builder setName(String name) {

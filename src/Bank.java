@@ -42,12 +42,6 @@ public class Bank extends Frame implements ActionListener {
 	private TextField transInAccId;
 	private JButton transTransfer;
 	private Account accWith;
-	private JButton createAccount;
-	private JFrame newCreateAcc;
-	private JButton deleteAccount;
-	private TextField delAccId;
-	private JFrame j1;
-	private JButton delete;
 	private JButton deposit;
 	private JFrame depositF;
 	private TextField depAccId;
@@ -78,7 +72,6 @@ public class Bank extends Frame implements ActionListener {
 	private TextField tfBal;
 	private TextField tfAccId;
 	private String accType;
-	private double balance;
 	private int accId;
 	private JFrame jCreateAcc;
 
@@ -548,7 +541,7 @@ public class Bank extends Frame implements ActionListener {
 					create.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 
-							User newUser = new User.Builder(tfUserName.getText(), tfUserPass.getText()).build();
+							User newUser = new User.Builder(tfUserName.getText(), tfUserPass.getText(), accId).build();
 							try {
 								double d1 = Double.parseDouble(tfBal.getText());
 								int i1 = Integer.parseInt(tfAccId.getText());
@@ -614,7 +607,7 @@ public class Bank extends Frame implements ActionListener {
 
 	public void createUser(String name, String password) {
 		// User user = new User(name, password);
-		User user = new User.Builder(name, password).build();
+		User user = new User.Builder(name, password, accId).build();
 		ArrayList<Account> list = new ArrayList<Account>();
 		users.put(user, list);
 	}
@@ -699,7 +692,7 @@ public class Bank extends Frame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Account not found !!");
 		} else {
 			if (found.getBalance() < amount) {
-				JOptionPane.showMessageDialog(null, "In Sufficint balance");
+				JOptionPane.showMessageDialog(null, "Insufficient balance");
 			} else {
 				hour = rightNow.get(Calendar.MINUTE);
 				found.setBalance(found.getBalance() - amount);
@@ -732,17 +725,16 @@ public class Bank extends Frame implements ActionListener {
 		} else {
 			obj.printTransLog();
 			JOptionPane.showMessageDialog(null,
-					"Account ID " + accId + ". Transcaction written to the text file (TrabsLog.txt)");
+					"Account ID " + accId + ". Transaction written to the text file (TransLog.txt)");
 			j3.dispose();
 
 		}
 	}
 
 	public static void main(String args[]) {
+		UserBuilderDirector.getUser1();
 		Bank bank = Bank.getBankInstance();
-		User user = new User.Builder("benji", "pass")
-				.setUserID(3)
-				.build();
+
 		bank.showLoginMenu();
 	}
 
@@ -757,10 +749,7 @@ public class Bank extends Frame implements ActionListener {
 	}
 
 	class ExitCommand implements Command {
-		private JFrame parent;
-
 		ExitCommand(JFrame parent) {
-			this.parent = parent;
 		}
 
 		public void Execute() {
@@ -770,10 +759,7 @@ public class Bank extends Frame implements ActionListener {
 	}
 
 	class ShowCommand implements Command {
-		private JFrame parent;
-
 		ShowCommand(JFrame parent) {
-			this.parent = parent;
 		}
 
 		public void Execute() {
