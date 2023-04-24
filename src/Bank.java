@@ -376,7 +376,7 @@ public class Bank extends Frame implements ActionListener {
 				jMenu.dispose();
 			}
 		});
-		mainPanel.add(new SelectedDecorator(logOut));
+		mainPanel.add(new SelectedDecorator(logOut)); // decorator pattern
 
 		quit = new JButton();
 		quit.setFont(new Font("Serif", Font.PLAIN, 30));
@@ -384,12 +384,12 @@ public class Bank extends Frame implements ActionListener {
 		quit.setBackground(Color.red);
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				executeCommand(new ExitCommand(jMenu));
+				executeCommand(new ExitCommand(jMenu));// command pattern
 				// provide execute command for each object to carry
 				// desired actions which is to exit
 			}
 		});
-		mainPanel.add(new QuitDecorator(quit));
+		mainPanel.add(new QuitDecorator(quit)); // decorator design pattern
 
 		jMenu.setTitle("ATM Machine"); // "super" Frame sets title
 		jMenu.setSize(300, 600);
@@ -732,8 +732,8 @@ public class Bank extends Frame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
-		UserBuilderDirector.getUser1();
-		Bank bank = Bank.getBankInstance();
+		UserBuilderDirector.getUser1();// builder design pattern
+		Bank bank = Bank.getBankInstance();// singleton pattern
 
 		bank.showLoginMenu();
 	}
@@ -750,16 +750,6 @@ public class Bank extends Frame implements ActionListener {
 
 	class ExitCommand implements Command {
 		ExitCommand(JFrame parent) {
-		}
-
-		public void Execute() {
-			System.exit(0);
-		}// implements from the interface command class
-			// when the button is press will exit the GUI
-	}
-
-	class ShowCommand implements Command {
-		ShowCommand(JFrame parent) {
 		}
 
 		public void Execute() {
